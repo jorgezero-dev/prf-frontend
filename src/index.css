@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* You can add global custom styles here if needed */
+body {
+  font-family: "Inter", sans-serif; /* Example font, install if you want */
+}
