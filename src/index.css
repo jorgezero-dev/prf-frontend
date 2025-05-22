@@ -1,6 +1,62 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
-/* You can add global custom styles here if needed */
+/* 
+  Global custom styles can be added here if they don't rely on @apply.
+  For Tailwind v4, it's often preferred to handle component-specific styles
+  directly in components or via plugins/CSS modules.
+*/
+
 body {
-  font-family: "Inter", sans-serif; /* Example font, install if you want */
+  font-family: "Inter", sans-serif; /* Ensure Inter is correctly imported or available */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  /* Base text and background colors will be applied via App.tsx or index.html */
+}
+
+/* 
+  Custom component classes like .btn-primary using @apply are not directly supported here in TWv4 with Vite.
+  These should be handled by:
+  1. Composing utility classes directly in your JSX.
+  2. Using CSS Modules with Tailwind's theme() function.
+  3. Creating a Tailwind plugin.
+*/
+
+/* Added based on HomePage.tsx for animations */
+@layer utilities {
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
 }
